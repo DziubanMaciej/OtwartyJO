@@ -23,11 +23,11 @@ int main() {
     for (jo_liczba_bz i = 0; i < WIELKOSC_DANYCH; i++) {
         dane[i] = i * 2;
     }
-    joZakolejkujPisanieBuforu(kolejka, buforA, JO_FALSZ, 0, sizeof(dane), dane, 0, NULL, NULL);
+    joZakolejkujPisanieBuforu(kolejka, buforA, JO_PRAWDA, 0, sizeof(dane), dane, 0, NULL, NULL);
     for (jo_liczba_bz i = 0; i < WIELKOSC_DANYCH; i++) {
         dane[i] = i * 3;
     }
-    joZakolejkujPisanieBuforu(kolejka, buforB, JO_FALSZ, 0, sizeof(dane), dane, 0, NULL, NULL);
+    joZakolejkujPisanieBuforu(kolejka, buforB, JO_PRAWDA, 0, sizeof(dane), dane, 0, NULL, NULL);
 
     /* Stworzenie programu */
     const char *zrodloProgramu = "void __kernel jadro(__global int* buforA, __global int* buforB, __global int* buforC) {\n"

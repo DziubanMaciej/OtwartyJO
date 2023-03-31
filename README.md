@@ -40,11 +40,11 @@ int main() {
     for (jo_liczba_bz i=0; i < wielkoscDanych; i++) {
         dane[i] = i * 2;
     }
-    joZakolejkujPisanieBufora(kolejka, buforA, JO_FALSZ, 0, sizeof(dane), dane, 0, NULL, NULL);
+    joZakolejkujPisanieBuforu(kolejka, buforA, JO_PRAWDA, 0, sizeof(dane), dane, 0, NULL, NULL);
     for (jo_liczba_bz i=0; i < wielkoscDanych; i++) {
         dane[i] = i * 3;
     }
-    joZakolejkujPisanieBufora(kolejka, buforB, JO_FALSZ, 0, sizeof(dane), dane, 0, NULL, NULL);
+    joZakolejkujPisanieBuforu(kolejka, buforB, JO_PRAWDA, 0, sizeof(dane), dane, 0, NULL, NULL);
 
     /* Stworzenie programu */
     const char *zrodloProgramu = "void __kernel jadro(__global int* buforA, __global int* buforB, __global int* buforC) {\n"
@@ -61,7 +61,7 @@ int main() {
 
     /* Wykonanie programu i odczytanie wynikow */
     joZakolejkujJadroZakresuND(kolejka, jadro, 1, NULL, &wielkoscDanych, NULL, 0, NULL, NULL);
-    joZakolejkujCzytanieBufora(kolejka, buforC, JO_PRAWDA, 0, sizeof(dane), dane, 0, NULL, NULL);
+    joZakolejkujCzytanieBuforu(kolejka, buforC, JO_PRAWDA, 0, sizeof(dane), dane, 0, NULL, NULL);
     for (jo_liczba_bz i=0; i < wielkoscDanych; i++) {
         printf("%d ", dane[i]);
     }
