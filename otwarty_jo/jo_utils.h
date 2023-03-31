@@ -1,7 +1,9 @@
 #ifdef __linux__
 #include <dlfcn.h>
 #elif _WIN32
+#include <Windows.h>
 #include <libloaderapi.h>
+#else
 #error "Unknown OS"
 #endif
 
@@ -10,7 +12,7 @@
 #define VERIFY_FUNCTION_LOADED_FUNCTION_AND_RETURN_ERROR(functionName) if(dispatch.functionName == NULL) { return CL_INVALID_OPERATION; }
 #define VERIFY_FUNCTION_LOADED_FUNCTION_AND_SET_ERROR(functionName, errorVariable) if(dispatch.functionName == NULL) { if(errorVariable) *errorVariable = CL_INVALID_OPERATION; return NULL; }
 #define VERIFY_FUNCTION_LOADED_FUNCTION_AND_RETURN_NULL(functionName) if(dispatch.functionName == NULL) { return NULL; }
-#define INITIALIZE_FUNCTION(functionName) dispatch.functionName = getFunctionPointer(openclLibrary, #functionName);
+#define INITIALIZE_FUNCTION(functionName) dispatch.functionName = (cl_api_##functionName) getFunctionPointer(openclLibrary, #functionName);
 
 void *openclLibrary;
 cl_icd_dispatch dispatch;
@@ -33,7 +35,7 @@ void* getFunctionPointer(void* library, const char *functionName) {
 #elif _WIN32
     if(library) {
         HMODULE hModule = (HMODULE) library;
-        return GetProcAddress( hModule, functionName);
+        return (void*) GetProcAddress( hModule, functionName);
     } else {
         return NULL;
     }
