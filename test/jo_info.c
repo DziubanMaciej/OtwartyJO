@@ -9,7 +9,7 @@ int main() {
     jo_identyfikator_platformy platforma = 0;
     joPobierzIdentyfikatoryPlatform(1, &platforma, NULL);
     jo_identyfikator_urzadzenia urzadzenie = 0;
-    joPobierzIdentyfikatoryUrzadzenia(platforma, JO_TYP_URZADZENIA_GPU, 1, &urzadzenie, NULL);
+    joPobierzIdentyfikatoryUrzadzenia(platforma, JO_TYP_URZADZENIA_PG, 1, &urzadzenie, NULL);
     jo_kontekst kontekst = joStworzKontekst(NULL, 1, &urzadzenie, NULL, NULL, NULL);
     jo_kolejka_rozkazow kolejka = joStworzKolejkeRozkazowZWlasciwosciami(kontekst, urzadzenie, NULL, NULL);
 
