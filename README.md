@@ -74,7 +74,7 @@ Wynik wykonania:
 ```
 
 ## Użycie w projekcie
-Projekt OtwartyJo należy umieścić wśród plików własnego projektu. Do skryptów budujących CMake należy dodać poniższe linie, gdzie TARGET_NAME określa nazwę pliku wykonywalnego aplikacji. Pozwoli to dodać OtwartyJo do procesu budowania tak, aby kompilator mógł odnaleźć pliki nagłówkowe, a linker miał dostęp do pliku binarnego biblioteki.
+Projekt OtwartyJo należy umieścić wśród plików własnego projektu. Do skryptów budujących CMake należy dodać poniższe linie, gdzie TARGET_NAME określa nazwę pliku wykonywalnego aplikacji. Pozwoli to dodać OtwartyJo do procesu budowania tak, aby kompilator mógł odnaleźć pliki nagłówkowe, a konsolidator miał dostęp do pliku binarnego biblioteki.
 ```
 add_subdirectory(OtwartyJo)
 target_link_libraries(${TARGET_NAME} OtwartyJo)
